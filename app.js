@@ -1,8 +1,4 @@
 const startGameBtn = document.getElementById("start-game-btn");
-const startMsg = document.getElementById("startMsg");
-const pInput = document.getElementById("pInput");
-const cInput = document.getElementById("cInput");
-const result = document.getElementById("result");
 
 const Rock = "ROCK";
 const Paper = "PAPER";
@@ -15,9 +11,12 @@ const resultCWinner = '"Alas You Lost"';
 let gameIsRunning = false;
 
 const getPlayerChoice = () => {
-  const selection = prompt(`${Rock},${Paper} or ${Scissor}`).toUpperCase();
+  const selection = prompt(
+    `Enter the choice ${Rock}, ${Paper} or ${Scissor}?`,
+    ""
+  ).toUpperCase();
   if (selection !== Rock && selection !== Paper && selection !== Scissor) {
-    alert(`Invalid choice! we chose default value ${defaultValue} for you`);
+    alert(`Invalid choice! We chose ${defaultValue} for you!`);
     return defaultValue;
   }
   return selection;
@@ -52,16 +51,12 @@ startGameBtn.addEventListener("click", () => {
     return;
   }
   gameIsRunning = true;
-  //   console.log("Game is starting");
-  startMsg.innerText = "Game is starting";
+  console.log("Game is starting");
   const PlayerChoice = getPlayerChoice();
   const ComputerChoice = getComputerChoice();
   const winner = getWinner(PlayerChoice, ComputerChoice);
-  pInput.innerText = `Player Choice is ${PlayerChoice}`;
-  cInput.innerText = `Computer Choice is ${ComputerChoice}`;
-  result.innerText = `Match Result ${winner}`;
-  //   console.log(`Player Choice is ${PlayerChoice}`);
-  //   console.log(`Computer Choice is ${ComputerChoice}`);
-  //   console.log(`Match Result ${winner}`);
+  console.log(`Player Choice is ${PlayerChoice}`);
+  console.log(`Computer Choice is ${ComputerChoice}`);
+  console.log(`Match Result ${winner}`);
   gameIsRunning = false;
 });
